@@ -78,8 +78,8 @@ const renderCards = () => {
                         </div>
                     </div>
                     <div class="item-price">
-                        <h4>${item?.offerPrice} ${item?.currency}</h4>
-                        <p>${item?.price} ${item?.currency}</p>
+                        <h4> $ ${item?.offerPrice?.toFixed(2)} ${item?.currency}</h4>
+                        <p> $ ${item?.price.toFixed(2)} ${item?.currency}</p>
                     </div>
                 </div>
                 <div class="card-row card-row-2 ${selectedItem === item?.id ? "active" : ""}">
@@ -130,7 +130,7 @@ const renderCards = () => {
     card.addEventListener("click", () => {
       selectedItem = parseInt(card.dataset.id);
       const newSelectedItem = itemData?.find((item) => item?.id === selectedItem);
-      total.innerText = `${newSelectedItem?.offerPrice} ${newSelectedItem?.currency}`;
+      total.innerText = `$ ${newSelectedItem?.offerPrice.toFixed(2)} ${newSelectedItem?.currency}`;
       renderCards();
     });
 
@@ -144,7 +144,7 @@ const renderCards = () => {
 };
 
 const newSelectedItem = itemData?.find((item) => item?.id === selectedItem);
-total.innerText = `${newSelectedItem?.offerPrice} ${newSelectedItem?.currency}`;
+total.innerText = `$ ${newSelectedItem?.offerPrice.toFixed(2)} ${newSelectedItem?.currency}`;
 
 // Initial render
 renderCards();
