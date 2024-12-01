@@ -129,9 +129,8 @@ const renderCards = () => {
   Array.from(cards).forEach((card) => {
     card.addEventListener("click", () => {
       selectedItem = parseInt(card.dataset.id);
-      const newSelectedItem = itemData?.find((item) => item?.id === selectedItem);
-      total.innerText = `$ ${newSelectedItem?.offerPrice.toFixed(2)} ${newSelectedItem?.currency}`;
       renderCards();
+      updateTotalPrice();
     });
 
     const selectOptions = card.querySelectorAll("select");
@@ -143,8 +142,12 @@ const renderCards = () => {
   });
 };
 
-const newSelectedItem = itemData?.find((item) => item?.id === selectedItem);
-total.innerText = `$ ${newSelectedItem?.offerPrice.toFixed(2)} ${newSelectedItem?.currency}`;
+// update total value function
+const updateTotalPrice = () => {
+  const newSelectedItem = itemData?.find((item) => item?.id === selectedItem);
+  total.innerText = `$ ${newSelectedItem?.offerPrice.toFixed(2)} ${newSelectedItem?.currency}`;
+};
 
 // Initial render
 renderCards();
+updateTotalPrice();
